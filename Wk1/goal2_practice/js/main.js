@@ -1,6 +1,6 @@
 /*
-     Name:
-     Date:
+     Name: Albert Martinez
+     Date: October 2, 2014
      Class & Section:  PWA1-####
      Comments: "Goal 2: JavaScript Practice"
  */
@@ -412,7 +412,12 @@ console.log('------ MORE Functions ----------');
 			}			
 */
 console.log('------ While / Loop ----------');
+	var numOfBeers = 10;
 
+	while (numOfBeers > 0){
+		console.log(numOfBeers + " kegs on the wall.");
+		numOfBeers--;
+	}
 	
 /*
 	===============================================
@@ -439,6 +444,10 @@ console.log('------ While / Loop ----------');
 console.log('------For Loop ----------');
 
 
+	for (var beers = 10; beers > 0; beers --){
+		console.log(beers + 'bottles of beers on the wall!')
+	}
+
 	/* 
 		array.Length
 	
@@ -450,7 +459,8 @@ console.log('------For Loop ----------');
 		- in the example below, the last index of the array would be 4 
 			- the  .length property returns the count, which would be 5	
 	*/	
-
+	var myNums = [1,2,3,4,5];
+	console.log("length: " + myNums.length);
 
 	/* 
 		using the for() loop with .length
@@ -470,7 +480,9 @@ console.log('------For Loop ----------');
 		- depending on the size of an array, it can be more efficient to 
 			save the array length in a variable, inside the first statement
 	*/
-
+	for (var i = 0, j = myNums.length; i < j; i++) {
+		console.log(myNums[i]);
+	}
 
 	/*
 		BREAK...
@@ -479,7 +491,14 @@ console.log('------For Loop ----------');
 		- by using the "break" statement, any loop will stop running at the 
 			break point, and perform no more iterations
 	*/
-
+	for (var i = 0, j = myNums.length; i < j; i++) {
+		
+		if ( i === 3) {
+			console.log("testing out the break and it broke");
+			break;
+		}
+		console.log('myNums.length in for loop: ' + myNums[i]);
+	}
 
 
 	/*
@@ -489,7 +508,14 @@ console.log('------For Loop ----------');
 			statement will stop a loop’s current iteration, and continue 
 			on to the next iteration
 	*/
-
+	for (var i = 0, j = myNums.length; i < j; i++) {
+		
+		if ( i === 3) {
+			console.log("testing out the break and it broke");
+			continue;
+		}
+		console.log('length in for loop: ' + myNums[i]);
+	}
 
 /*******************************************
  STUDENT ACTIVITY 7:
@@ -502,8 +528,14 @@ console.log('------For Loop ----------');
 		b.  create a for loop using the faster method (4 parameters)
 			- in the loop just console.log the values
 ********************************************/
+var supers = ['Superman', 'Batman', 'Wolverine', 'Iceman'];
+for (var i = 0; i < supers.length; i++) {
+	console.log(supers[i]);
+}
 
-
+for (var i = 0, j = supers.length; i < j; i++) {
+	console.log(supers[i]);
+} 
 
 /*******************************************
     STUDENT ACTIVITY 8: (More Practice):
@@ -511,9 +543,9 @@ console.log('------For Loop ----------');
      1.  output "name" in lowercase
      2.  output "name" in uppercase
      3.  output the character in the 3rd index
-     4.  output the index number where the work "nice" us located
+     4.  output the index number where the word "nice" is located
      5.  output the characters in "name" between indexes 10 & 14
-     6.  create a array variable using "name", and output the array
+     6.  create an array variable using "name", and output the array
      7.  output the item in index 4
      8.  join all elements of the array separated by a "|"
      9.  output the array in reverse order
@@ -524,9 +556,49 @@ console.log('------For Loop ----------');
 ********************************************/
 
     console.log('------ More PRACTICE ----------');
-
+    // 1
     var name = 'This is a nice change of pace';
+    console.log(name.toLowerCase());
+
+    // 2
+    console.log(name.toUpperCase());
+
+    // 3
+    console.log(name.charAt(3));
+
+    // 4
+    console.log(name.indexOf("nice"));
+
+    // 5 
+    console.log(name.substring(10, 14));
+
+    // 6
+    var name = ['This', 'is', 'a', 'nice', 'change', 'of', 'pace'];
+    console.log(name[0]);
+
+    // 7 
+    console.log(name[4]);
+
+    // 8 
+    console.log(name.join(" | "));
+
+    // 9 
+    console.log(name.reverse());
+
+    // 10
+    console.log(name.slice(0,6));
+
+    // 11
+    console.log(name.push("NEW VALUE"), name.pop());
+
+    // 12
+    console.log(name.slice(0, 7));
+
+    
 
 
 
-})();
+
+
+
+    })();

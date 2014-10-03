@@ -179,7 +179,10 @@ console.log('------ arrays ----------');
 
 	//arrays can hold any data type
 
-
+	console.log("index 0: ", myArr[0]);
+	console.log("index 0: ", myArr[1]);
+	console.log("index 0: ", myArr[2]);
+	console.log("index 0: ", myArr[3]);
 
  /*******************************************
 
@@ -189,7 +192,8 @@ console.log('------ arrays ----------');
 	2.  console.log the sum of all the numbers in an array
 
  ********************************************/
-
+var addArray = [10, 50, 100, 200];
+console.log("Sum of all numbers in addArray: ", addArray[0] + addArray[1] + addArray[2] + addArray[3]);
 
 
 /*******************************************
@@ -206,7 +210,12 @@ console.log('------ arrays ----------');
 	3. output array items using string concatenation
 
  ********************************************/
+var myArray = new Array();
+myArray[0] = "baseball";
+myArray[1] = "football";
+myArray[2] = "basketball";
 
+console.log(myArray[0] + ", " + myArray[1] + ", " + myArray[2]);
 
  // conditionals: (definition, indexing, math, if, if-else, if-else if, ternary)
 console.log('------ conditionals ----------');
@@ -314,6 +323,8 @@ console.log('------ conditionals ----------');
  		console.log("if-else: the 'IF' statement is false");
  	}
 
+ 	
+
  	if ("a" === "b") {
  		//TRUE: run code
  		console.log("a is less than b");
@@ -321,6 +332,8 @@ console.log('------ conditionals ----------');
  		//FALSE: run code
  		console.log("if-else: the 'IF' statement is false");
  	}
+
+	
 
 	//if - else if - else (allows for multiple options)
 	if ("a" > "b") {
@@ -332,6 +345,8 @@ console.log('------ conditionals ----------');
  	} else {
  		console.log("if-else if: all others returned false");
  	}
+	
+
 	//nested conditional statement
 	if ("a" !== "a") {
 		if ("b" === "b") {

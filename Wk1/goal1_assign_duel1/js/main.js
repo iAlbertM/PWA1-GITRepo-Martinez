@@ -32,41 +32,34 @@ PSEUDO CODE:
 	console.log("Fight!"); // verify if document is setup properly
 
 	// PLAYER NAME
-	console.log("------ PLAYER NAME ------");
- 	// give each player a name and store it in a variable named player1 & player2
-
+ 	// give each player a name and store in a variable for each (p1Name & p2Name)
 	var p1Name = "Modern Man";
 	var p2Name = "Retro Rival";
 
 
 	// PLAYER DAMAGE
-	console.log("------ PLAYER DAMAGE ------");
 	// give each player a max damage they can cause to the other player per round
-
 	var p1Damage = p2Damage = 35;
 
 
 	// PLAYER HEALTH
-	console.log("------ PLAYER HP (HEALTH POINTS) ------");
-	// provide each player health points - a way to keep track of health and damage taken
-
+	// provide each player health points - a way to keep track of the damage received
 	var p1Health = p2Health = 100;
-
-
-	// Round
-	console.log("------ ROUND ------");
-	var round = 1;
+	
+	// initialize # of rounds to 0 in order to dislay the correct round # when loop begins
+	var round = 0;
 
 
 	// FIGHT()
-	console.log("------ FIGHT() ------");
-	// create a fight function that loops through 10 rounds and subtracts a random # from the players' health
+	// create a fight function that loops up to 10 rounds and subtracts a random # from the players' health
+	// initiate the function and name it fight()
 	function fight() {
 		
-		// create an alert that displays the start of the round and each players health
-		alert(p1Name + ': ' + p1Health + ' ** START ** ' + p2Name + ': ' + 'p2Health');
+		// create an alert that displays the start of the round and each players starting health points
+		alert(p1Name + ': ' + p1Health + ' ** START ** ' + p2Name + ': ' + p2Health);
 		
-		// create a for loop to advance rounds, initialize i=0, set # of rounds with conditional statement, increase i by 1 every round until all 10 rounds are reached
+		/* create a for loop to act as a round counter that will increase by 1 every round
+		initialize i=0, set # of rounds with conditional statement to prevent a being stuck in a forever loop, increase i by 1 every round*/
 		for (var i = 0; i < 10; i++) {
 
 			// given players max damage, calculate the min damage (1/2 the players max Damage)
@@ -77,10 +70,11 @@ PSEUDO CODE:
 			var f1 = Math.floor(Math.random() * (max - min) + min);
 			var f2 = Math.floor(Math.random() * (max - min) + min);
 
+			// subtract the damage taken from each players Health - assign it to the playersHealth
 			p1Health -=f1;
 			p2Health -=f1;
 
-			// check if our random # is being generated and the amount subtracted from the players Health
+			// check if our random # is working and if each pleyersHealth is reflecting the damage
 			console.log(p1Name + ': ' + p1Health + p2Name + ': ' + p2Health);
 
 			// store the result of each round in a variable named 'result'
@@ -88,6 +82,15 @@ PSEUDO CODE:
 			
 			// print to the console the outcome of fight() to verify it's working properly
 			console.log(results);
+
+			if (results === "no winner") {
+				round++;
+				// create an alert that displays the start of the round and each players health
+				alert(p1Name + ': ' + p1Health + ' ** ROUND ' + round + ' OVER ** '  + p2Name + ': ' +p2Health);
+			} else {
+				alert(results);
+				break;
+			}
 		}
 	}
 	
@@ -96,6 +99,7 @@ PSEUDO CODE:
 	console.log("------ WINCHECK() ------");
 
 	function winnerCheck(){
+		console.log("in winnerCheck()")
 		var result = "no winner";
 
 		if(p1Health < 1 && p2Health < 1) {

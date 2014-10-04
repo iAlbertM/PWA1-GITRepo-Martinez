@@ -109,12 +109,11 @@ console.log('------Recap Conditionals ----------');
 			same as:
 
 				if (weather === "Cloudy"){
-					mood = 
-				}else{
-					//false
+					mood = sad; // if conditional is true - code block runs
+				} else{
+					// If conditional is false - this code block runs
 				};
 	*/
-
 
 /*
 	===============================================
@@ -158,38 +157,48 @@ var str2 = 'JavaScript loves me!';
 var abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 // Use charAt() to console.log the 'v' in str1.
+console.log(str1.charAt(4));  //write to the console: in str1 give me the character at index of 4
 
 
 // Use indexOf() to console.log the index of 'm' in str2.
-
+console.log(str2.indexOf('m')); //Write to the console the index position of the letter 'm' in str2
 
 // Use lastIndexOf() to console.log the last 'a' in str1.
-
+console.log(str1.lastIndexOf('a')); //returns the position of the last occurrence of 'a' in str1
 
 // Use length to console.log the length in str1.
-
+console.log(str1.length); //returns the number of characters in str1
 
 // Use split() to console.log an array of the ABC's using the abc variable.
 // EX: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+console.log(abc.split('')); /*write to the console an array of variable
+							abc split up with '' in between each element */
 
 
+console.log("------ STUDENT ACTIVITY 1: ------");
 //STUDENT ACTIVITY 1:
 // Use substr() to console.log 'JavaScript!' from str1.
-
+console.log("substr(): ", str1.substr(7,17));
 
 // Use concat() to console.log 'I love JavaScript ! JavaScript loves me!' with str1 and str2.
+console.log("concat(): ", str1.concat(str2));
 
 
 
+console.log("------ STUDENT ACTIVITY 2: ------");
 //STUDENT ACTIVITY 2:
 // Use substring() to console.log 'JavaScript' from str2.
+console.log("substring(): ", str2.substring(0, 11));
 
 
+
+console.log("------ STUDENT ACTIVITY 3: ------");
 //STUDENT ACTIVITY 3:
 // 1. Use toLowerCase() to console.log the str1 all in lowercase letters.
+console.log("1. toLowerCase(): ", str1.toLowerCase());
+
 // 2. Use toUpperCase() to console.log the str1 all in uppercase letters.
-
-
+console.log("2. toUpperCase(): ", str1.toUpperCase());
 
 /*
 	===============================================
@@ -314,7 +323,30 @@ var arr3 = ['apple', 'orange', 50393, 7.324];
 
 console.log('------ MORE Operators - typeof() ----------');
 
+/* 
+	finding out a variables data type: undefined, boolean, number, string, function, object (including arrays)
+	syntax: var myself = 
+*/
+console.log(typeof 5); // "number"
+console.log(typeof "Hi"); // "string"
 
+var str1 = 'hello'
+console.log(typeof str1); // "string"
+console.log(typeof false); // "boolean"
+console.log(typeof function(){}); // "function"
+console.log(typeof obj1); // " undefined"
+console.log(typeof [1,2,3,4,5]); // " object"
+
+console.log(typeof missingVariable); // " undefined"
+
+// checking to see if str1 data type is the same as the string "undefined"
+console.log(str1 === 'undefined');
+
+if(typeof str1 === 'undefined'){
+	console.log("str1 is undefined");
+} else {
+	console.log('str1 is ', str1);
+}
 /*
 	===============================================
 	MORE:  Conditionals (switch())

@@ -4,29 +4,6 @@ Date: 10/3/2014
 Assignment: Goal1: Duel #1 
 */
 
-
-/*
-PSEUDO CODE: 
-			
-	//initialize round = i
-	//round 1 begins
-	// generate random# using Math.floor(Math.random()*(max - min) + min)
-	// calculate: p1hp = p1hp - random#
-	// is p1HP > 0? 
-		// if yes, continue
-		// if not, p1 = dead
-	//generate random# using Math.floor(Math.random()*(max - min) + min)
-	// calculate: p2hp = p2hp - random#
-	// is p2HP > 0? 
-		// if yes, continue
-		// if not, p1 = dead
-
-*/
-
-
-
-
-
 //self-executing function
 (function(){
 	console.log("Fight!"); // verify if document is setup properly
@@ -66,27 +43,29 @@ PSEUDO CODE:
 			var minDamage1 = p1Damage * .5;
 			var minDamage2 = p2Damage * .5;
 
-			// generate a random # between a players max and min damage to determine the amount of damage each player will receive
-			var f1 = Math.floor(Math.random() * (max - min) + min);
-			var f2 = Math.floor(Math.random() * (max - min) + min);
+			// generate a random # between the max and min damage to determine the damage to each player
+			var f1 = Math.floor(Math.random() * (p1Damage - minDamage1) + minDamage1);
+			var f2 = Math.floor(Math.random() * (p2Damage - minDamage2) + minDamage2);
 
-			// subtract the damage taken from each players Health - assign it to the playersHealth
+			// each playersHealth should reflect the damage received
 			p1Health -=f1;
-			p2Health -=f1;
+			p2Health -=f2;
 
 			// check if our random # is working and if each pleyersHealth is reflecting the damage
-			console.log(p1Name + ': ' + p1Health + p2Name + ': ' + p2Health);
+			// console.log(p1Name + ': ' + p1Health + ' || ' + p2Name + ': ' + p2Health);
 
-			// store the result of each round in a variable named 'result'
+			
 			var results = winnerCheck();
 			
 			// print to the console the outcome of fight() to verify it's working properly
 			console.log(results);
 
+			// if there is no winner continue to the next round
 			if (results === "no winner") {
 				round++;
-				// create an alert that displays the start of the round and each players health
+				// create an alert that displays round #, round end, and each playersHealth
 				alert(p1Name + ': ' + p1Health + ' ** ROUND ' + round + ' OVER ** '  + p2Name + ': ' +p2Health);
+			// otherwise display an alert with the winner, break the loop, and exit program	
 			} else {
 				alert(results);
 				break;
@@ -98,19 +77,31 @@ PSEUDO CODE:
 	// WINCHECK()
 	console.log("------ WINCHECK() ------");
 
+	// create a function called winnerCheck to check if a player has won at the end of every round
 	function winnerCheck(){
-		console.log("in winnerCheck()")
+		// check using a console.log() if this function is working 
+		// console.log("in winnerCheck FN");
+
+		// create a "no winner" outcome and set it to a variable named result
 		var result = "no winner";
 
-		if(p1Health < 1 && p2Health < 1) {
+		// use a conditional statement to check if both players' health fell below 0
+		if (p1Health < 1 && p2Health < 1) {
+			// if above is true, both players lose
 			result = "You both lost";
+			// since they both didn't lost then check if one of the players' health is below 0 to determine the loser and the other the winner
 		} else if (p1Health < 1) {
-			result = p2Name + "Wins!";
+			result = p2Name + " Wins!";
 		} else if (p2Health < 1) {
-			result = p1Name + "Wins!";
+			result = p1Name + " Wins!";
 		}
+		// return the value to the result variable to make this function reuseable
+		return result;
 	}
-
+	
+	/****** PROGRAM BEGINS HERE ******/
+	// the fight function invocation
+	fight();
 
 
 })();

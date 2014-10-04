@@ -513,7 +513,7 @@ console.log('------For Loop ----------');
 			save the array length in a variable, inside the first statement
 	*/
 	for (var i = 0, j = myNums.length; i < j; i++) {
-		console.log(myNums[i]);
+		console.log('myNums of index i: ', myNums[i]);
 	}
 
 	/*

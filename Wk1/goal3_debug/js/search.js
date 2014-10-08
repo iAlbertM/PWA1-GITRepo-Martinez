@@ -1,14 +1,24 @@
+/*
+Name: Albert Martinez
+Date: 10/04/2014
+Assignment: Goal4_Debug
+*/
+
 // Create privatized scope using a self-executing function
+// creating a self-invoking function allows a function to be run automatically without having to be called or named-- Hence the connection with a "privatized scope" 
 (function(){
 	
 	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
+	// manipulating the DOM -- early stages. Declaring a variable named resultsDIV and assigning it a value of an HTML element with an id of results. this is where the search results will most likely populate.
 	var resultsDIV = document.getElementById("results"),
+		// this is where the search input field will be 
 		searchInput = document.forms[0].search,
 		currentSearch = ''
 	;
 	
 	// Validates search query
-	var validqte == function(query){
+	//assigning the value of a search query function to the variable validqte
+	var validate = function(query){
 		
 		// Trim whitespace from start and end of search query
 		while(query.charAt(0) = " "){
@@ -20,24 +30,29 @@
 		
 		// Check search length, must have 3 characters
 		if(query.length < 3){
-			alert("Your search query is too small, try again.);
+			//	if true, the page will display an alert box notifying you that your search query is too short
+			alert("Your search query is too small, try again.");
 			
 			// (DO NOT FIX THE LINE DIRECTLY BELOW)
+			// a JavaScript event that is triggered when (in this case) an input field is given focus
 			searchInput.focus();
 			return;
 		};
-		
-		search(query);
+		//called the search veriable which contains a function and its being passed a query argument that might search(query);
 	};
 	
 	// Finds search matches
-	var search = function(query)
+	// a function that will run a search based upon a users input
+	var search = function(query){
 		
 		// split the user's search query string into an array
+		//to break up the users "string" into keyword sized chunks use an array method called .join(seperator)
 		var queryArray = query.join(" ");
 		
 		// array to store matched results from database.js
+		// create an empty array to store the results from the users search to be able to access previous searches much quicker and easier
 		var results = [];
+
 
 		// loop through each index of db array
 		for(var i=0, j=db.length; i<j; i++){

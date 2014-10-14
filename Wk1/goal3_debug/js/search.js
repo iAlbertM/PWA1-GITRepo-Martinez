@@ -1,135 +1,133 @@
 /*
 Name: Albert Martinez
-Date: 10/04/2014
+Date: 10/14/2014
 Assignment: Goal4_Debug
+
+ABBREVIATION LEGEND:
+
+var fxSyn = "fixed syntax error"
+var fxRun = "fixed runtime error"
+var fxLog = "fixed logical error"
 */
 
+
 // Create privatized scope using a self-executing function
-// creating a self-invoking function allows a function to be run automatically without having to be called or named-- Hence the connection with a "privatized scope" 
-(function(){
-	
-	// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
-	// manipulating the DOM -- early stages. Declaring a variable named resultsDIV and assigning it a value of an HTML element with an id of results. this is where the search results will most likely populate.
-	var resultsDIV = document.getElementById("results"),
-		// this is where the search input field will be 
-		searchInput = document.forms[0].search,
-		currentSearch = ''
-	;
-	
-	// Validates search query
-	//assigning the value of a search query function to the variable validqte
-	var validate = function(query){
+( // opening to a self executing function-everything within these parentheses is organized visually as belonging together
+	function (){
 		
-		// Trim whitespace from start and end of search query
-		while(query.charAt(0) = " "){
-			query = query.substring(1, query.length);
-		};
-		while(query.charAt(query.length-1) === ""){
-			query = query.substring(0, query.length-1);
+		// Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
+		var resultsDIV = document.getElementById("results"),
+			searchInput = document.forms[0].search,
+			currentSearch = ''
 		;
 		
-		// Check search length, must have 3 characters
-		if(query.length < 3){
-			//	if true, the page will display an alert box notifying you that your search query is too short
-			alert("Your search query is too small, try again.");
+		// Validates search query
+		var validqte = function(query){ //fxSyn: corrected assignment operator:'==' to '='
 			
-			// (DO NOT FIX THE LINE DIRECTLY BELOW)
-			// a JavaScript event that is triggered when (in this case) an input field is given focus
-			searchInput.focus();
-			return;
-		};
-		//called the search veriable which contains a function and its being passed a query argument that might search(query);
-	};
-	
-	// Finds search matches
-	// a function that will run a search based upon a users input
-	var search = function(query){
-		
-		// split the user's search query string into an array
-		//to break up the users "string" into keyword sized chunks use an array method called .join(seperator)
-		var queryArray = query.join(" ");
-		
-		// array to store matched results from database.js
-		// create an empty array to store the results from the users search to be able to access previous searches much quicker and easier
-		var results = [];
-
-
-		// loop through each index of db array
-		for(var i=0, j=db.length; i<j; i++){
-		
-			// each db[i] is a single video item, each title ends with a pipe "|"
-			// save a lowercase variable of the video title
-			var dbTitleEnd = db[i].indexOf('|');
-			var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+			// Trim whitespace from start and end of search query
+			while(query.charAt(0) = " "){
+				query = query.substring(1, query.length);
+			};
+			while(query.charAt(query.length-1) === ""){
+				query = query.substring(0, query.length-1);
+			}; // fxSyn: added closing curly brace
 			
-			// loop through the user's search query words
-			// save a lowercase variable of the search keyword
-			for(var ii=0, jj=queryArray.length; ii<jj; ii++){
-				var qitem = queryArray[ii].tolowercase();
+			// Check search length, must have 3 characters
+			if(query.length < 3){
+				alert("Your search query is too small, try again."); //fxSyn: added ending double quotes to alert: "...again.); to "...again.");
 				
-				// is the keyword anywhere in the video title?
-				// If a match is found, push full db[i] into results array
-				var compare = dbitem.indexOf(qitem);
-				if(compare !== -1){
-					results.push(db[i]);
-				};
-			;
-		;
+				// (DO NOT FIX THE LINE DIRECTLY BELOW)
+				searchInput.focus();
+				return;
+			};
+			
+			search(query);
+		};
 		
+		// Finds search matches
+		var search = function(query) { // fxSyn: added opening curly brace for function code block
+			
+			// split the user's search query string into an array
+			var queryArray = query.join(" ");
+			
+			// array to store matched results from database.js
+			var results = [];
+
+			// loop through each index of db array
+			for(var i=0, j=db.length; i<j; i++){
+			
+				// each db[i] is a single video item, each title ends with a pipe "|"
+				// save a lowercase variable of the video title
+				var dbTitleEnd = db[i].indexOf('|');
+				var dbitem = db[i].tolowercase().substring(0, dbTitleEnd);
+				
+				// loop through the user's search query words
+				// save a lowercase variable of the search keyword
+				for(var ii=0, jj=queryArray.length; ii<jj; ii++){
+					var qitem = queryArray[ii].tolowercase();
+					
+					// is the keyword anywhere in the video title?
+					// If a match is found, push full db[i] into results array
+					var compare = dbitem.indexOf(qitem);
+					if(compare !== -1){
+						results.push(db[i]);
+					};
+				}; // fxSyn: added closing curly brace
+			}; // fxSyn: added closing curly brace
+	
 		results.sort();
 		
 		// Check that matches were found, and run output functions
 		if(results.length = 0){
 			noMatch();
-		}else{
+		} else {
 			showMatches(results);
 		};
-	};
-	
-	// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
-	var noMatch = function(){
-		var html = ''+
-			'<p>No Results found.</p>'+
-			'<p style="font-size:10px;">Try searching for "JavaScript".  Just an idea.</p>'
-		;
-		resultsDIV.innerHTML = html;
-	};
-	
-	// Put matches into page as paragraphs with anchors
-	var showMatches = function(results){
+	}; // end of the search reference variable definition
 		
-		// THE NEXT 4 LINES ARE CORRECT.
-		var html = '<p>Results</p>', 
-			title, 
-			url
-		;
-		
-		// loop through all the results search() function
-		for(var i=0, j=results.length; i<j; i++){
-		
-			// title of video ends with pipe
-			// pull the title's string using index numbers
-			titleEnd = results[i].indexOf('|');
-			title = results[i].subString(0, titleEnd);
-			
-			// pull the video url after the title
-			url = results[i].substring(results[i].indexOf('|')+1, results[i].length);
-			
-			// make the video link - THE NEXT LINE IS CORRECT.
-			html += '<p><a href=' + url + '>' + title + '</a></p>';
+		// Put "No Results" message into page (DO NOT FIX THE HTML VAR NOR THE innerHTML)
+		var noMatch = function(){
+			var html = ''+
+				'<p>No Results found.</p>'+
+				'<p style="font-size:10px;">Try searching for "JavaScript".  Just an idea.</p>'
+			;
+			resultsDIV.innerHTML = html;
 		};
-		resultsDIV.innerHTML = html; //THIS LINE IS CORRECT.
-	};
-	
-	// The onsubmit event will be reviewed in upcoming Course Material.
-	// THE LINE DIRECTLY BELOW IS CORRECT
-	document.forms[0].onsubmit = function(){
-		var query = searchInput.value;
-		validqte(query);
+		
+		// Put matches into page as paragraphs with anchors
+		var showMatches = function(results){
+			
+			// THE NEXT 4 LINES ARE CORRECT.
+			var html = '<p>Results</p>', 
+				title, 
+				url
+			;
+			
+			// loop through all the results search() function
+			for(var i=0, j=results.length; i<j; i++){
+			
+				// title of video ends with pipe
+				// pull the title's string using index numbers
+				titleEnd = results[i].indexOf('|');
+				title = results[i].subString(0, titleEnd);
+				
+				// pull the video url after the title
+				url = results[i].substring(results[i].indexOf('|')+1, results[i].length);
+				
+				// make the video link - THE NEXT LINE IS CORRECT.
+				html += '<p><a href=' + url + '>' + title + '</a></p>';
+			};
+			resultsDIV.innerHTML = html; //THIS LINE IS CORRECT.
+		};
+		
+		// The onsubmit event will be reviewed in upcoming Course Material.
+		// THE LINE DIRECTLY BELOW IS CORRECT
+		document.forms[0].onsubmit = function(){
+			var query = searchInput.value;
+			validqte(query);
 
-        // return false is needed for most events - this will be reviewed in upcoming course material
-        // THE LINE DIRECTLY BELOW IS CORRECT
-		return false;
-	;
-
-})();
+	        // return false is needed for most events - this will be reviewed in upcoming course material
+	        // THE LINE DIRECTLY BELOW IS CORRECT
+			return false;
+		}; // fxSyn: added closing curly bracefor function expression
+	}()); // fxSyn: inverted the anonymous function's argument parentheses: from ')(' to '()'

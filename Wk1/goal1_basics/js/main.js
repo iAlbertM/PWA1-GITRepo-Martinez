@@ -6,7 +6,7 @@
  */
 
 // self-executing function
-
+(function(){
 // Alert Hello World
 
 /* 
@@ -541,7 +541,11 @@ console.log('------Functions ----------');
 		functionName();
 
  *****************************
-	ANONYMOUS FUNCTION
+
+
+
+
+	/*ANONYMOUS FUNCTION
 
 	- as an example:
 		var functionName = function(){
@@ -558,9 +562,16 @@ console.log('------Functions ----------');
 
 	 - type the below as an example
 		functionName();
- *****************************
+ *****************************/
 
-
+ myctr = 1;
+var myCounter = function(){
+	var testVar = 0;
+	myctr++;
+	console.log("counter = ", myctr);
+	};
+	myCounter();
+	myCounter();
 
 
  /*
@@ -599,7 +610,14 @@ console.log('------Functions ----------');
  */
 
 
+var value1 = 1;
+var value2 = 2;
 
+var myFn = function(var1, var2) {
+	console.log("function number: ", var1 + var2);
+};
+
+myFn(value1, value2);
 
 /*******************************************
  STUDENT ACTIVITY 6:
@@ -614,6 +632,13 @@ console.log('------Functions ----------');
  ********************************************/
 
 
+var myctr = 1;
+var myCounter = function(newct){
+	myctr += newct;
+	console.log('counter = ', myctr);
+};
+	myCounter(5);
+	myCounter(2);
 
 
 /*******************************************
@@ -625,7 +650,12 @@ console.log('------Functions ----------');
 		type) back to the point of call (referred to as a method)
 	- the called function should be assigned to a variable (i.e name - see below)
  ********************************************/
+var myFn = function() {
+	return "jamesBond";
+};
 
+var name = myFn();  
+console.log("name is: " + name);
 
 
 	// if a return gives back no value, it instead returns “undefined”
@@ -643,7 +673,19 @@ console.log('------Functions ----------');
 			output the same info
 	4.  console.log the results
  ********************************************/
+var myctr = 1;
 
+var myCounter = function(newct){
+	myctr += newct;
+	return myctr;
+};
+	
+
+myCounter(5);
+console.log('counter = ', myctr);
+
+myCounter(2);
+console.log('counter = ', myctr);
 
 
 
@@ -656,4 +698,37 @@ console.log('------Functions ----------');
  4. return bobsMood
  5. console.log the Results
  ********************************************/
+var bobsMood;
+var value1 = "Sunny";
+var value2 = 10;
 
+function moodFunc(weather, waves) {
+
+ // if weather is sunny "bobsMood" is happy
+ if (weather === "Sunny") {
+ 	if (waves === 10) {
+ 		bobsMood = "pumped";
+ 	} else if ((waves <= 9) && (waves >= 5)){
+ 		bobsMood = "mellow";
+ 	} else {
+ 		bobsMood = "bummed";
+ 	}
+ } else if (weather == "overcast") {
+ 	if ((waves <= 10) && (waves >= 7)) {
+ 		bobsMood = "jacked Up";
+ 	} else if ((waves <= 6) && (waves >= 3)) {
+ 		bobsMood = "totally bummed";
+ 	} else {
+ 		bobsMood = "not happy";
+ 	}
+ } else {
+ 	bobsMood = "sad";
+ 	}
+ return bobsMood;
+};
+ 
+ var moodIs = moodFunc(value1, value2);
+ console.log("Bob's mood is " + moodIs);
+
+
+})();

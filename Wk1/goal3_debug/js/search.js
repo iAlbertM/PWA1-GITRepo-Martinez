@@ -7,7 +7,6 @@ ABBREVIATION LEGEND:
 
 var fxSyn = "fixed syntax error"
 var fxRun = "fixed runtime error"
-var fxLog = "fixed logical error"
 */
 
 
@@ -16,16 +15,16 @@ var fxLog = "fixed logical error"
     function() {
 
         // Variable initialization (DO NOT FIX ANY OF THE BELOW VAR's)
-        var resultsDIV = document.getElementById("results"),
-            searchInput = document.forms[0].search,
-            currentSearch = '';
+        var resultsDIV = document.getElementById("results"), // assign html element with id '#results' to a variable named 'resultsDIV'
+            searchInput = document.forms[0].search, // assign the HTML search input field to the variable searchInput
+            currentSearch = 'search text here'; // input a placeholder value for the input field-assign it to the variable current search
         console.log("inside the self executing anonymous function"); //test for runtime-errors with console.logs
         // Validates search query
         var validqte = function(query) { //fxSyn: corrected assignment operator:'==' to '='
             console.log("inside validqte a.k.a. the 'valid quote' function"); //test for runtime-errors with console.logs
             // Trim whitespace from start and end of search query
             while (query.charAt(0) === " ") { // fxRun: fixed assignment operand from '=' to '==='
-                query = query.substring(1, query.length);
+                query = query.substring(1, query.length); // while condition is true, 
             };
             console.log("inside 1st while statment-query: ", query); //test for runtime-errors with console.logs
             while (query.charAt(query.length - 1) === "") {
@@ -67,7 +66,7 @@ var fxLog = "fixed logical error"
                 for (var ii = 0, jj = queryArray.length; ii < jj; ii++) {
                     console.log("inside for-loop's nested for-loop"); //test for runtime-errors with console.logs
                     var qitem = queryArray[ii].toLowerCase(); //fxRun: changed 'tolowercase' to 'toLowerCase'
-                    
+
                     // is the keyword anywhere in the video title?
                     // If a match is found, push full db[i] into results array
                     var compare = dbitem.indexOf(qitem);
@@ -122,9 +121,9 @@ var fxLog = "fixed logical error"
                 html += '<p><a href=' + url + '>' + title + '</a></p>';
             };
             resultsDIV.innerHTML = html; //THIS LINE IS CORRECT.
-             console.log("done looping through the showMatches function"); //test for errors with console.logs
+            console.log("done looping through the showMatches function"); //test for errors with console.logs
         };
-       
+
         // The onsubmit event will be reviewed in upcoming Course Material.
         // THE LINE DIRECTLY BELOW IS CORRECT
         document.forms[0].onsubmit = function() {
@@ -136,4 +135,4 @@ var fxLog = "fixed logical error"
             console.log("The End");
             return false;
         }; // fxSyn: added closing curly bracefor function expression
-    }()); // fxSyn: inverted the anonymous function's argument parentheses: from ')(' to '()'
+    }());  // fxSyn: inverted the anonymous function's argument parentheses: from ')(' to '()'
